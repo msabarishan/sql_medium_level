@@ -41,3 +41,13 @@ Eg:
 select distinct city from station where city regexp '^(a|e|i|o|u)';
 --Ends with Vowels
 select distinct city from station where city regexp '(a|e|i|o|u)$';
+-- .* any no of in between characters, starting and ending with vowels
+select distinct city from station where city regexp '^[aeiou].*[aeiou]$';
+--Does not start with vowels
+select distinct city from station where city regexp '^[^aeiou]';
+--CITY names from STATION that either do not start with vowels or do not end with vowels.
+select distinct city from station where city not regexp '^[aeiou].*[aeiou]$';
+
+4. Order
+--Order by last n characters order by right(column_name,n)
+select Name from students where Marks >75 order by right(Name,3), ID;
