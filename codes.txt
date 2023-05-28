@@ -1,0 +1,43 @@
+1. To find the length of Characters:
+
+select city,length(city) from city_table;
+
+2. Like:
+The LIKE operator is commonly used with the % and _ wildcards to match patterns within string values.
+Eg:
+select * from table where city like 'a%';
+To find all names with "e" as the second character:
+
+SELECT name
+FROM users
+WHERE name LIKE '_e%';
+
+3. Regexp:
+
+Metacharacters: Metacharacters have special meanings in regular expressions. Some commonly used metacharacters are:
+
+. (dot): Matches any single character except a newline.
+*: Matches zero or more occurrences of the previous character or group.
++: Matches one or more occurrences of the previous character or group.
+?: Matches zero or one occurrence of the previous character or group.
+| (pipe): Acts as an OR operator, allowing alternative matches.
+Character Classes: Character classes allow you to match a set of characters. Some examples include:
+
+[abc]: Matches any character "a", "b", or "c".
+[0-9]: Matches any digit from 0 to 9.
+[^abc]: Matches any character except "a", "b", or "c".
+Anchors: Anchors are used to match positions within the text. Some commonly used anchors are:
+
+^: Matches the start of a line.
+$: Matches the end of a line.
+Quantifiers: Quantifiers specify the number of occurrences to match. Some examples include:
+
+{n}: Matches exactly "n" occurrences.
+{n,}: Matches "n" or more occurrences.
+{n,m}: Matches between "n" and "m" occurrences.
+
+Eg:
+--Starts with Vowels
+select distinct city from station where city regexp '^(a|e|i|o|u)';
+--Ends with Vowels
+select distinct city from station where city regexp '(a|e|i|o|u)$';
