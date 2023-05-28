@@ -1,0 +1,26 @@
+--Manhattan Distance - Distance between two points (x1,y1) and (x2,y2) calculated in right angles. (Adj + Opp Sides) = |x1-x2|+|y1-y2|
+--Eucledian Distance - Distance between two points calculated in straight line (Hypo Side)= sqrt( Adj^2 +Opp^2)
+
+--Finding Square root
+SELECT number, SQRT(number) AS SquareRoot
+FROM numbers_table;
+
+--Finding Square
+SELECT POWER(5, 2) AS Square;
+
+--Finding Median--my sql dont have median
+SELECT ROUND(MEDIAN(LAT_N), 4) AS Median
+FROM STATION;
+
+-- Basic method
+select round(t1.lat_n,4) from 
+(select lat_n, row_number() over(order by lat_n) as s_no, count(*) over() as ttl from station) as t1
+where s_no in ((t1.ttl+1)/2,(t1.ttl+2)/2);
+
+
+-- sum,avg,count is already known in basics
+
+--Calculating avg between salary and salary with zero removed
+-- round -round(column_name,4) and round to next int ceiling(column_name),round to pre int fllor(column_name) 
+
+select CEILING(avg(salary)-avg(cast(replace(salary,'0','') as unsigned))) from employees;
